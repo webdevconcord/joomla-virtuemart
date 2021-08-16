@@ -1,11 +1,19 @@
 <?php
 
 /**
- * Class ConcordPay
- * @copyright
- * @license
- * @since
+ * @package     VirtueMart
+ * @subpackage  Plugins - ConcordPay
+ * @package     VirtueMart
+ * @subpackage  Payment
+ * @author      ConcordPay
+ * @link        https://concordpay.concord.ua
+ * @copyright   2021 ConcordPay
+ * @license     GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ * @since       3.0
  */
+
+defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . 'is not allowed.');
+
 class ConcordPay
 {
     const ORDER_APPROVED      = 'Approved';

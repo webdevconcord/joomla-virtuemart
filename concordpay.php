@@ -1,19 +1,29 @@
 <?php
+
+/**
+ * @package     VirtueMart
+ * @subpackage  Plugins - ConcordPay
+ * @package     VirtueMart
+ * @subpackage  Payment
+ * @author      ConcordPay
+ * @link        https://concordpay.concord.ua
+ * @copyright   2021 ConcordPay
+ * @license     GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ * @since       3.0
+ */
+
+defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . 'is not allowed.');
+
+defined('_VALID_MOS') or die('Direct Access to ' . basename(__FILE__) . 'is not allowed.');
+
 //ini_set("display_errors", true);
 //error_reporting(E_ALL);
 
-if (!defined('_VALID_MOS') && !defined('_JEXEC')) {
-    die('Direct Access to ' . basename(__FILE__) . ' is not allowed.');
-}
-
 if (!class_exists('vmPSPlugin')) {
-    require(JPATH_VM_PLUGINS . DS . 'vmpsplugin.php');
+    require(JPATH_VM_PLUGINS . '/vmpsplugin.php');
 }
 
-/**
- * Class plgVmPaymentConcordpay
- * @since
- */
+
 class plgVmPaymentConcordpay extends vmPSPlugin
 {
     // instance of class
@@ -72,9 +82,9 @@ class plgVmPaymentConcordpay extends vmPSPlugin
             return false;
         }
 
-        include_once(__DIR__ . DS . "/ConcordPay.cls.php");
+        include_once(__DIR__ . '/ConcordPay.cls.php');
         if (!class_exists('VirtueMartModelCurrency')) {
-            require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'currency.php');
+            require(JPATH_VM_ADMINISTRATOR . '/models/currency.php');
         }
 
         JFactory::getLanguage()->load($filename = 'com_virtuemart', JPATH_ADMINISTRATOR);
@@ -82,7 +92,7 @@ class plgVmPaymentConcordpay extends vmPSPlugin
         $html = "";
 
         if (!class_exists('VirtueMartModelOrders')) {
-            require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'orders.php');
+            require(JPATH_VM_ADMINISTRATOR . '/models/orders.php');
         }
 
         self::getPaymentCurrency($method);
@@ -139,10 +149,10 @@ class plgVmPaymentConcordpay extends vmPSPlugin
             }
         }
 
-        $html = '	<form action="' . Concordpay::URL . '" method="post" id="concordpay_payment_form">
-  				' . implode('', $concordpayArgsArray) .
-            '</form>' .
-            "<div><img src='/plugins/vmpayment/concordpay/assets/images/loader.gif' width='50px' style='margin:20px 20px;'></div>" .
+        $html = '<form action="' . Concordpay::URL . '" method="post" id="concordpay_payment_form">' .
+            implode('', $concordpayArgsArray) . '</form>' .
+            '<div><img src="/plugins/vmpayment/concordpay/assets/images/loader.gif"
+  				 width="50px" style="margin:20px 20px;"></div>' .
             "<script> setTimeout(function() {
                  document.getElementById('concordpay_payment_form').submit();
              }, 500);
@@ -178,7 +188,7 @@ class plgVmPaymentConcordpay extends vmPSPlugin
         }
 
         if (!class_exists('VirtueMartCart')) {
-            require(JPATH_VM_SITE . DS . 'helpers' . DS . 'cart.php');
+            require(JPATH_VM_SITE . '/helpers/cart.php');
         }
 
         $data = vRequest::getPost();
@@ -187,11 +197,11 @@ class plgVmPaymentConcordpay extends vmPSPlugin
         }
 
         if (!class_exists('VirtueMartModelOrders')) {
-            require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'orders.php');
+            require(JPATH_VM_ADMINISTRATOR . '/models/orders.php');
         }
 
         if (!class_exists('ConcordPay')) {
-            require(__DIR__ . DS . 'ConcordPay.cls.php');
+            require(__DIR__ . '/ConcordPay.cls.php');
         }
 
         list($order_id, ) = explode(ConcordPay::ORDER_SEPARATOR, $data['orderReference']);
@@ -253,9 +263,9 @@ class plgVmPaymentConcordpay extends vmPSPlugin
      */
     public function plgVmOnUserPaymentCancel()
     {
-        $data = JRequest::get('get');
+        $data = JFactory::getApplication()->input;
 
-        require(__DIR__ . DS . 'ConcordPay.cls.php');
+        require(__DIR__ . '/ConcordPay.cls.php');
         list($order_id, ) = explode(ConcordPay::ORDER_SEPARATOR, $data['order_id']);
         $order = new VirtueMartModelOrders();
 
@@ -268,7 +278,7 @@ class plgVmPaymentConcordpay extends vmPSPlugin
         }
 
         if (!class_exists('VirtueMartModelOrders')) {
-            require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'orders.php');
+            require(JPATH_VM_ADMINISTRATOR . '/models/orders.php');
         }
 
         $this->handlePaymentUserCancel($data['oid']);
@@ -292,10 +302,10 @@ class plgVmPaymentConcordpay extends vmPSPlugin
         }
 
         if (!class_exists('VirtueMartModelOrders')) {
-            require(JPATH_VM_ADMINISTRATOR . DS . 'models' . DS . 'orders.php');
+            require(JPATH_VM_ADMINISTRATOR . '/models/orders.php');
         }
 
-        require(__DIR__ . DS . 'ConcordPay.cls.php');
+        require(__DIR__ . '/ConcordPay.cls.php');
 
         list($order_id, ) = explode(ConcordPay::ORDER_SEPARATOR, $data['orderReference']);
 
@@ -391,7 +401,6 @@ class plgVmPaymentConcordpay extends vmPSPlugin
      * @param integer $selected ID of the method selected
      * @param $htmlIn
      * @return boolean True on success, false on failures, null when this plugin was not selected.
-     * On errors, JError::raiseWarning (or JError::raiseError) must be used to set a message.
      *
      * @author Valerie Isaksen
      * @author Max Milbers

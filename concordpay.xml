@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension version="3.1" type="plugin" group="vmpayment">
-    <name>ConcordPay Payment Gateway for VirtueMart</name>
-    <creationDate>June 2021</creationDate>
+    <name>VM Payment - ConcordPay</name>
+    <creationDate>August 16 2021</creationDate>
     <author>ConcordPay</author>
-    <authorUrl>https://pay.concord.ua</authorUrl>
+    <authorUrl>https://concordpay.concord.ua</authorUrl>
     <copyright>ConcordPay</copyright>
-    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
-    <version>1.1.0</version>
-    <description>ConcordPay payment plugin</description>
+    <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+    <version>1.1.1</version>
+    <description><![CDATA[<a href="https://concordpay.concord.ua" target="_blank">ConcordPay</a> ]]></description>
 
     <files>
         <filename plugin="concordpay">concordpay.php</filename>
@@ -84,4 +84,9 @@
             </fieldset>
         </fields>
     </vmconfig>
+    <updateservers>
+        <!-- Note: No spaces or linebreaks allowed between the server tags -->
+        <server type="extension" name="VirtueMart plg_vmpayment_concordpay Update Site">
+            <![CDATA[http://virtuemart.net/releases/vm3/plg_vmpayment_concordpay_update.xml]]></server>
+    </updateservers>
 </extension>
