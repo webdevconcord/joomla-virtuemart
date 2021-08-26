@@ -14,8 +14,6 @@
 
 defined('_JEXEC') or die('Direct Access to ' . basename(__FILE__) . 'is not allowed.');
 
-defined('_VALID_MOS') or die('Direct Access to ' . basename(__FILE__) . 'is not allowed.');
-
 //ini_set("display_errors", true);
 //error_reporting(E_ALL);
 
@@ -23,7 +21,11 @@ if (!class_exists('vmPSPlugin')) {
     require(JPATH_VM_PLUGINS . '/vmpsplugin.php');
 }
 
-
+/**
+ * @package     ${NAMESPACE}
+ *
+ * @since 3.0
+ */
 class plgVmPaymentConcordpay extends vmPSPlugin
 {
     // instance of class

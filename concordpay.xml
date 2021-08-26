@@ -11,8 +11,8 @@
 
     <files>
         <filename plugin="concordpay">concordpay.php</filename>
-        <filename plugin="concordpay">ConcordPay.cls.php</filename>
-        <filename plugin="concordpay">index.html</filename>
+        <filename>ConcordPay.cls.php</filename>
+        <filename>index.html</filename>
         <filename>concordpay.png</filename>
         <folder>language</folder>
         <folder>assets</folder>
