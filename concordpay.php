@@ -132,7 +132,12 @@ class plgVmPaymentConcordpay extends vmPSPlugin
             'approve_url'  => $return_url,
             'decline_url'  => $return_url,
             'cancel_url'   => $return_url,
-            'callback_url' => $callback_url
+            'callback_url' => $callback_url,
+            // Statistics.
+            'client_last_name'  => $orderDetails->last_name ?? '',
+            'client_first_name' => $orderDetails->first_name ?? '',
+            'email'             => $orderDetails->email ?? '',
+            'phone'             => $orderDetails->phone_1 ?? ''
         );
 
         //Adds js script with currency flag
@@ -403,6 +408,7 @@ class plgVmPaymentConcordpay extends vmPSPlugin
      * @param integer $selected ID of the method selected
      * @param $htmlIn
      * @return boolean True on success, false on failures, null when this plugin was not selected.
+     * On errors, JError::raiseWarning (or JError::raiseError) must be used to set a message.
      *
      * @author Valerie Isaksen
      * @author Max Milbers

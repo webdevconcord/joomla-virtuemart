@@ -6,7 +6,7 @@
     <authorUrl>https://concordpay.concord.ua</authorUrl>
     <copyright>ConcordPay</copyright>
     <license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <description>VirtueMart ConcordPay payment plugin</description>
 
     <files>
@@ -22,57 +22,57 @@
         <fields name="params">
             <fieldset name="payment" addpath="/administrator/components/com_virtuemart/fields">
                 <field type="vmfiles"
-                    name="payment_logos"
-                    label="VMPAYMENT_CONCORDPAY_LOGOS"
-                    description="VMPAYMENT_CONCORDPAY_LOGOS_DESC"
-                    directory="/plugins/vmpayment/concordpay"
-                    default="concordpay.png"
-                    hide_default="1"
-                    hide_none="1"
-                    stripext="0"
-                    exclude=".*\.(php|html|xml|wsdl|md)"
+                       name="payment_logos"
+                       label="VMPAYMENT_CONCORDPAY_LOGOS"
+                       description="VMPAYMENT_CONCORDPAY_LOGOS_DESC"
+                       directory="/plugins/vmpayment/concordpay"
+                       default="concordpay.png"
+                       hide_default="1"
+                       hide_none="1"
+                       stripext="0"
+                       exclude=".*\.(php|html|xml|wsdl|md)"
                 />
                 <field name="concordpay_merchant_account"
-                    type="text"
-                    label="VMPAYMENT_CONCORDPAY_CONCORDPAY_MERCHANT"
-                    description="VMPAYMENT_CONCORDPAY_CONCORDPAY_MERCHANT_DESC"
+                       type="text"
+                       label="VMPAYMENT_CONCORDPAY_CONCORDPAY_MERCHANT"
+                       description="VMPAYMENT_CONCORDPAY_CONCORDPAY_MERCHANT_DESC"
                 />
                 <field name="concordpay_secret_key"
-                    type="text"
-                    label="VMPAYMENT_CONCORDPAY_CONCORDPAY_SECRET_KEY"
-                    description="VMPAYMENT_CONCORDPAY_CONCORDPAY_SECRET_KEY_DESC"
+                       type="text"
+                       label="VMPAYMENT_CONCORDPAY_CONCORDPAY_SECRET_KEY"
+                       description="VMPAYMENT_CONCORDPAY_CONCORDPAY_SECRET_KEY_DESC"
                 />
                 <field name="concordpay_language"
-                    type="list"
-                    default="RU"
-                    label="VMPAYMENT_CONCORDPAY_CONCORDPAY_LANGUAGE"
-                    description="VMPAYMENT_CONCORDPAY_CONCORDPAY_LANGUAGE_DESC"
+                       type="list"
+                       default="RU"
+                       label="VMPAYMENT_CONCORDPAY_CONCORDPAY_LANGUAGE"
+                       description="VMPAYMENT_CONCORDPAY_CONCORDPAY_LANGUAGE_DESC"
                 >
                     <option value="RU">RU</option>
                     <option value="EN">EN</option>
                     <option value="UA">UA</option>
                 </field>
                 <field name="concordpay_currency"
-                    type="list"
-                    default="RU"
-                    label="VMPAYMENT_CONCORDPAY_CONCORDPAY_CURRENCY"
-                    description="VMPAYMENT_CONCORDPAY_CONCORDPAY_CURRENCY_DESC"
+                       type="list"
+                       default="RU"
+                       label="VMPAYMENT_CONCORDPAY_CONCORDPAY_CURRENCY"
+                       description="VMPAYMENT_CONCORDPAY_CONCORDPAY_CURRENCY_DESC"
                 >
                     <option value="UAH">грн.</option>
                 </field>
                 <field name="concordpay_status_pending"
-                    type="vmorderstate"
-                    scope="com_virtuemart"
-                    default="P"
-                    label="VMPAYMENT_CONCORDPAY_STATUS_PENDING"
-                    description="VMPAYMENT_CONCORDPAY_STATUS_PENDING_DESC"
+                       type="vmorderstate"
+                       scope="com_virtuemart"
+                       default="P"
+                       label="VMPAYMENT_CONCORDPAY_STATUS_PENDING"
+                       description="VMPAYMENT_CONCORDPAY_STATUS_PENDING_DESC"
                 />
                 <field name="concordpay_status_success"
-                    type="vmorderstate"
-                    scope="com_virtuemart"
-                    default="C"
-                    label="VMPAYMENT_CONCORDPAY_STATUS_SUCCESS"
-                    description="VMPAYMENT_CONCORDPAY_STATUS_SUCCESS_DESC"
+                       type="vmorderstate"
+                       scope="com_virtuemart"
+                       default="C"
+                       label="VMPAYMENT_CONCORDPAY_STATUS_SUCCESS"
+                       description="VMPAYMENT_CONCORDPAY_STATUS_SUCCESS_DESC"
                 />
                 <field name="concordpay_status_refunded"
                        type="vmorderstate"
