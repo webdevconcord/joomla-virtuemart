@@ -114,7 +114,7 @@ class plgVmPaymentConcordpay extends vmPSPlugin
             . $order['details']['BT']->order_number . '&order_pass=' . $order['details']['BT']->order_pass
         );
         $callback_url = JROUTE::_(
-            JURI::root() . 'index.php?option=com_virtuemart&view=pluginresponse&task=pluginresponsereceived&pm='
+            JURI::root() . 'index.php?option=com_virtuemart&view=vmplg&task=pluginresponsereceived&pm='
             . $paymentMethodID
         );
 
@@ -245,7 +245,7 @@ class plgVmPaymentConcordpay extends vmPSPlugin
 
             if ($orderStatus) {
                 $orderitems['order_status']        = $orderStatus;
-                $orderitems['customer_notified']   = 0;
+                $orderitems['customer_notified']   = 1;
                 $orderitems['virtuemart_order_id'] = $order_s_id;
 
                 $orderitems['comments'] = 'ConcordPay ID: ' . $order_id . ' Ref ID: ' . $data['transactionId'];
@@ -607,7 +607,8 @@ class plgVmPaymentConcordpay extends vmPSPlugin
     protected function getOrderDescription($order) :string
     {
         return JFactory::getLanguage()->_('VMPAYMENT_CONCORDPAY_PAYMENT_DESCRIPTION') . ' ' .
-            JUri::getInstance()->getHost() . ', ' . $order->first_name  . ' ' . $order->last_name . ', ' . $order->phone_1;
+            JUri::getInstance()->getHost() . ', ' . $order->first_name  . ' ' .
+            $order->last_name . ', ' . $order->phone_1;
     }
 
     /**
